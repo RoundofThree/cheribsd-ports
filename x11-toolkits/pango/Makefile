@@ -50,6 +50,13 @@ X11_MESON_ENABLED=	xft
 X11_USES=	xorg
 X11_USE=	XORG=x11,xft,xrender
 
+.include <bsd.port.options.mk>
+
+.if ${ABI:Mpurecap}
+# -Dintrospection should be set to "disabled" when disabling introspection.
+introspection_MESON_ARG=	disabled
+.endif
+
 pre-configure:
 # .if !exists() evaluates too early before cairo has a chance to be installed
 	@if ! pkg-config --exists cairo-gobject; then \

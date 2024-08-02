@@ -43,12 +43,11 @@ GLIB_MESON_ENABLED=	glib
 GOBJECT_DESC=		Depend on gobject
 GLIB_DESC=		Depend on glib
 
-OPTIONS_EXCLUDE_purecap=	GOBJECT GLIB
-
 .include <bsd.port.options.mk>
 
-.if !${ABI:Mpurecap}
-USES+=			gnome
+.if ${ABI:Mpurecap}
+# -Dintrospection should be set to "disabled" when disabling introspection.
+introspection_MESON_ARG=	disabled
 .endif
 
 .if ${HARFBUZZ_SLAVE} == no

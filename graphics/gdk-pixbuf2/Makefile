@@ -44,4 +44,11 @@ PNG_MESON_ENABLED=	png
 TIFF_LIB_DEPENDS=	libtiff.so:graphics/tiff
 TIFF_MESON_ENABLED=	tiff
 
+.include <bsd.port.options.mk>
+
+.if ${ABI:Mpurecap}
+# -Dintrospection should be set to "disabled" when disabling introspection.
+introspection_MESON_ARG=	disabled
+.endif
+
 .include <bsd.port.mk>
