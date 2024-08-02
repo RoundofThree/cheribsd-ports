@@ -11,7 +11,7 @@ WWW=		https://www.jcea.es/programacion/pybsddb.htm
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-USES=		bdb python
+USES=		bdb:18 python
 USE_PYTHON=	distutils autoplist
 
 PYDISTUTILS_CONFIGUREARGS=--libs="-l${BDB_LIB_NAME}" --berkeley-db=${LOCALBASE}
